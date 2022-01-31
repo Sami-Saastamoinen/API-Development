@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Questing Heroes - Heroes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Available Heroes</h1>
+        <ul>
+            <li th:each="hero:${heroes}">
+                <a th:text="${hero}">placeholder</a>
+            </li>
+        </ul>
+        <br>
+        <br>
+        <form method="get" action="/">
+            <button>Back</button> 
+        </form>
+        <form method="post" action="/heroes">
+            <input type="text" name="heroname" placeholder="New Hero Name..." required></input>
+            <button>Add New Hero</button> 
+        </form>
+    </body>
+</html>
