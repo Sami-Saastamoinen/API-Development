@@ -9,17 +9,17 @@
         <h1>Available Heroes</h1>
         <ul>
             <li th:each="hero:${heroes}">
-                <a th:text="${hero}">placeholder</a>
+                <a th:href="@{heroes/{item}(item=${hero.name})}" th:text="${hero.name} + ' (level ' + ${hero.level} + ')'">hero</a>
             </li>
         </ul>
         <br>
         <br>
         <form method="get" action="/">
-            <button>Back</button> 
+            <button>Back</button>
         </form>
         <form method="post" action="/heroes">
-            <input type="text" name="heroname" placeholder="New Hero Name..." required></input>
-            <button>Add New Hero</button> 
+            <input type="text" name="heroName" placeholder="New Hero Name..." required>
+            <button>Add New Hero</button>
         </form>
     </body>
 </html>
