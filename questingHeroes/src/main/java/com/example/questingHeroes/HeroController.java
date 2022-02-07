@@ -16,6 +16,9 @@ public class HeroController {
     @Autowired
     private HeroService heroService;
     
+    @Autowired
+    private QuestService questService;
+    
     @GetMapping("/heroes")
     public String getHeroes(Model model){
         ArrayList<Hero> heroes = heroService.getHeroes();
@@ -33,7 +36,9 @@ public class HeroController {
     @GetMapping("heroes/{heroName}")
     public String getHeroInfo(@PathVariable String heroName, Model model){
         Hero hero = heroService.findHeroByName(heroName);
+        ArrayList<Quest> quests = questService.getQuests();
         model.addAttribute("hero", hero);
+        model.addAttribute("quests", quests);
         return "hero";
     }
 }
