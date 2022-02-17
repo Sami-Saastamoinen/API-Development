@@ -22,7 +22,7 @@ public class HeroController {
     
     @GetMapping("/heroes")
     public String getHeroes(Model model){
-        ArrayList<Hero> heroes = heroService.getHeroes();
+        List<Hero> heroes = heroService.getHeroes();
         model.addAttribute("heroes", heroes);
         return "heroes";
     }
