@@ -2,6 +2,7 @@
 package com.example.questingHeroes;
 
 import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +37,7 @@ public class HeroController {
     @GetMapping("heroes/{heroName}")
     public String getHeroInfo(@PathVariable String heroName, Model model){
         Hero hero = heroService.findHeroByName(heroName);
-        ArrayList<Quest> quests = questService.getQuests();
+        List<Quest> quests = questService.getQuests();
         model.addAttribute("hero", hero);
         model.addAttribute("quests", quests);
         return "hero";

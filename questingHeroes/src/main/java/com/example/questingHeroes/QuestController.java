@@ -1,6 +1,7 @@
 package com.example.questingHeroes;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +17,7 @@ public class QuestController {
     
     @GetMapping("/quests")
     public String getQuests(Model model){
-        ArrayList<Quest> quests = questService.getQuests();
+        List<Quest> quests = questService.getQuests();
         model.addAttribute("quests", quests);
         return "quests";
     }
