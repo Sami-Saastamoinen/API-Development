@@ -19,6 +19,9 @@ public class HeroService {
     }*/
 
     @Autowired
+    private QuestService questService;
+    
+    @Autowired
     private HeroRepository heroRepository;
     
     public List<Hero> getHeroes() {
@@ -41,4 +44,18 @@ public class HeroService {
         return null;*/
     }
     
+    public void tryQuest(String heroName, String questName) {
+        Hero hero = this.findHeroByName(heroName);
+        Quest quest = questService.findQuestByName(questName);
+        for (int i = 0; i < hero.getLevel(); i++) {
+            int x = (int) (Math.random() * 20) + 1;
+            if (x > quest.getDifficulty()) {
+                hero.completeQuest();
+                this.heroRepository.save(hero);
+                return;
+            }
+        }
+        hero.failQuest();
+        this.heroRepository.save(hero);
+    }
 }

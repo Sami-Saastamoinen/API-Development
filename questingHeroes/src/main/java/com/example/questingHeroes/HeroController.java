@@ -42,4 +42,10 @@ public class HeroController {
         model.addAttribute("quests", quests);
         return "hero";
     }
+    
+    @PostMapping("/tryquest")
+    public String tryQuest(@RequestParam String heroName, String questName){
+        heroService.tryQuest(heroName, questName);
+        return "redirect:/heroes/" + heroName;
+    }
 }

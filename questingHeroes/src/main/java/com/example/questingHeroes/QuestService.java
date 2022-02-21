@@ -11,9 +11,6 @@ public class QuestService {
     //private ArrayList<Quest> quests;
     
     @Autowired
-    private HeroService heroService;
-    
-    @Autowired
     private QuestRepository questRepository;
     
     /*public QuestService(){
@@ -49,19 +46,6 @@ public class QuestService {
         this.questRepository.deleteByName(name);
         /*Quest quest = findQuestByName(name);
         this.quests.remove(quest);*/
-    }
-    
-    public void tryQuest(String heroName, String questName) {
-        Hero hero = heroService.findHeroByName(heroName);
-        Quest quest = findQuestByName(questName);
-        for (int i = 0; i < hero.getLevel(); i++) {
-            int x = (int) (Math.random() * 20) + 1;
-            if (x > quest.getDifficulty()) {
-                hero.completeQuest();
-                return;
-            }
-        }
-        hero.failQuest();
     }
 }
 

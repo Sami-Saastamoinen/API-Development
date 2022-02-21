@@ -33,10 +33,4 @@ public class QuestController {
         questService.deleteQuestByName(questName);
         return "redirect:/quests";
     }
-    
-    @PostMapping("/tryquest")
-    public String tryQuest(@RequestParam String heroName, String questName){
-        questService.tryQuest(heroName, questName);
-        return "redirect:/heroes/" + heroName;
-    }
 }
