@@ -12,7 +12,7 @@
 	<artifactId>turboDrifting</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Turbo Drifting</name>
-	<description>Simplified game about building a drift monster.</description>
+	<description>Simplified game about racing in drift events.</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

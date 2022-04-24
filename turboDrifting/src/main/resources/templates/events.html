@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Turbo Drifting - Events Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h1>Available Events</h1>
+            <ul>
+                <li th:each="event : ${events}">
+                    <span th:text="${event.name} + ' (Rep required: ' + ${event.repReq} + ' | Entry fee: ' + ${event.fee} + ')'">event</span>
+                    <form  method="post" action="/deleteevent">
+                        <input type="hidden" id="event" name="eventName" th:value="${event.name}">
+                        <button type="submit">Delete</button>  
+                    </form>
+                    <br>
+                </li>
+            </ul>
+        </div>
+        <form  method="post" action="/events">
+            <p>
+                <input type="text" id="event_name" name="eventName" placeholder="New event name..." required>
+                <input type="text" id="event_rep_req" name="eventRepReq" placeholder="New event rep requirement..." required>
+                <input type="text" id="event_fee" name="eventFee" placeholder="New event entry fee..." required>
+                <button type="submit">Add New Event</button>
+            </p>
+            
+        </form>
+        <form method="get" action="/">
+            <button type="submit">Back</button>
+        </form>
+    </body>
+</html>

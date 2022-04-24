@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Turbo Drifting - Driver Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2 th:text="${driver.name}">name</h2>
+        <h3 th:text="${driver.status}">status</h3>
+        <p th:text="'Rep: ' + ${driver.rep}">rep</p>
+        <p th:text="'Money: ' + ${driver.dollar}"dollar</p>
+        <p th:text="'Events won: ' + ${driver.wins}"wins</p>
+        <p th:text="'Events lost: ' + ${driver.losses}"losses</p>
+        <form method="get" action="/drivers">
+            <button>Back</button>
+        </form>
+        
+        <h2 th:if="${driver.rep > 0 and driver.dollar > 0}">Available Events</h2>
+        <ul th:if="${driver.rep > 0 and driver.dollar > 0}">
+            <li th:each="event : ${events}">
+                <span th:text="${event.name} + ' (Rep required: ' + ${event.repReq} + ' | Entry fee: ' + ${event.fee} + ')'">event</span>
+                <form method="post" action="/tryevent">
+                    <input type="hidden" id="driver" name="driverName" th:value="${driver.name}">
+                    <input type="hidden" id="event" name="eventName" th:value="${event.name}">
+                    <button type="submit">Try Event</button>
+                </form>
+            </li>
+        </ul>
+    </body>
+</html>
